@@ -18,6 +18,9 @@ const Questions = ({ questions, setIsActive, id }) => {
   const handleSave = (id) => {
     if (id === 1) {
       let flag = true;
+      console.log(initialAnswers);
+      console.log(answers);
+
       for (let i = 0; i < answers.length; i++) {
         if (answers[i] !== initialAnswers[i]) {
           flag = false;
@@ -27,9 +30,12 @@ const Questions = ({ questions, setIsActive, id }) => {
       if (flag) {
         setActiveAccordian((prevState) => ({
           ...prevState,
-          [id + 1]: false,
-          [id + 2]: false,
+          2: false,
+          3: false,
         }));
+
+        setIsActive(false);
+        return;
       }
     }
 
