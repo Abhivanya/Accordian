@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo app wiht file</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="main w-full min-h-screen bg-zinc-900 text-white p-10">
+        <a class="text-blue-600 mb-10" href="/">Back to Home</a>
+        <h1 class="text-4xl text-bold m-5 ">
+            <%= filename %>
+        </h1>
+        <p class="mx-5">
+            <%= data %>
+        </p>
+    </div>
+</body>
+
+</html>

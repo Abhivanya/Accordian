@@ -1,0 +1,29 @@
+.buttons {
+    width: 100%;
+    padding: 10px;
+
+}
+
+.buttons button {
+    padding: 5px 8px;
+    background: white;
+    border: none;
+    outline: none;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 10px;
+
+}
+
+.buttons .save {
+    color: red;
+    margin-right: 5px;
+}
+
+.buttons .cancel {
+    color: rgb(55, 116, 136);
+}
+
+.buttons button:hover {
+    background-color: rgb(101, 244, 110);
+}
