@@ -1,17 +1,38 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Question from "../question/Question";
 import "./Questions.css";
 import { AccordianContext } from "../AccordianContext";
 
 const Questions = ({ questions, setIsActive, id }) => {
-  const {
-    defaultOpton,
-    setDefaultOption,
-    activeAccordian,
-    setActiveAccordian,
-  } = useContext(AccordianContext);
+  const { activeAccordian, setActiveAccordian } = useContext(AccordianContext);
+
+  const initialAnswers = questions.map(() => "No");
+  const [answers, setAnswers] = useState(initialAnswers);
+
+  const handleAnswerChange = (index, value) => {
+    const newAnswers = [...answers];
+    newAnswers[index] = value;
+    setAnswers(newAnswers);
+  };
 
   const handleSave = (id) => {
+    if (id === 1) {
+      let flag = true;
+      for (let i = 0; i < answers.length; i++) {
+        if (answers[i] !== initialAnswers[i]) {
+          flag = false;
+          break;
+        }
+      }
+      if (flag) {
+        setActiveAccordian((prevState) => ({
+          ...prevState,
+          [id + 1]: false,
+          [id + 2]: false,
+        }));
+      }
+    }
+
     if (id < 3) {
       setActiveAccordian((prevState) => ({
         ...prevState,
@@ -19,14 +40,21 @@ const Questions = ({ questions, setIsActive, id }) => {
       }));
     }
     setIsActive(false);
-    console.log(activeAccordian);
   };
 
-  const handleClear = (id) => {};
+  const handleClear = (id) => {
+    setAnswers(initialAnswers);
+  };
+
   return (
     <>
       {questions.map((question, index) => (
-        <Question question={question} key={index} defaultOpton />
+        <Question
+          question={question}
+          key={index}
+          selectedValue={answers[index]}
+          onAnswerChange={(value) => handleAnswerChange(index, value)}
+        />
       ))}
       <div className="buttons">
         <button className="save" onClick={() => handleSave(id)}>

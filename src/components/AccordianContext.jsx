@@ -5,7 +5,7 @@ const AccordianContext = createContext();
 
 const ContextProvider = ({ children }) => {
   const [firstAccordianCompleted, setFirstAccordianCompleted] = useState(false);
-  const [defaultOpton, setDefaultOption] = useState(true);
+  const [defaultOption, setDefaultOption] = useState(true);
   const [activeAccordian, setActiveAccordian] = useState({
     1: true,
     2: false,
@@ -17,7 +17,7 @@ const ContextProvider = ({ children }) => {
         firstAccordianCompleted,
         setFirstAccordianCompleted,
         data,
-        defaultOpton,
+        defaultOption,
         setDefaultOption,
         activeAccordian,
         setActiveAccordian,
