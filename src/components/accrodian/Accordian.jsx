@@ -20,7 +20,11 @@ const Accordian = ({ questions, heading, id }) => {
   };
 
   useEffect(() => {
-    if (activeAccordian[id]) setEditable(true);
+    if (activeAccordian[id]) {
+      setEditable(true);
+    } else {
+      setEditable(false);
+    }
   }, [activeAccordian]);
 
   return (
