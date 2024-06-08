@@ -4,6 +4,10 @@
 
 }
 
+.disablebtn {
+    display: none;
+}
+
 .buttons button {
     padding: 5px 8px;
     background: white;

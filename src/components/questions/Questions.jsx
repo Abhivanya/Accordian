@@ -8,8 +8,10 @@ const Questions = ({ questions, setIsActive, id }) => {
 
   const initialAnswers = questions.map(() => "No");
   const [answers, setAnswers] = useState(initialAnswers);
+  const [btnVisible, setBtnVisible] = useState(false);
 
   const handleAnswerChange = (index, value) => {
+    setBtnVisible(true);
     const newAnswers = [...answers];
     newAnswers[index] = value;
     setAnswers(newAnswers);
@@ -35,6 +37,7 @@ const Questions = ({ questions, setIsActive, id }) => {
         }));
 
         setIsActive(false);
+        setBtnVisible(false);
         return;
       }
     }
@@ -62,7 +65,7 @@ const Questions = ({ questions, setIsActive, id }) => {
           onAnswerChange={(value) => handleAnswerChange(index, value)}
         />
       ))}
-      <div className="buttons">
+      <div className={btnVisible ? "buttons" : "disablebtn"}>
         <button className="save" onClick={() => handleSave(id)}>
           Save
         </button>
